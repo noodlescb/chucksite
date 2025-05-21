@@ -1,8 +1,15 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 
+interface FeatureCardProps {
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+  delay?: number;
+}
+
 // Feature card component
-const FeatureCard = ({ title, description, icon, delay = 0 }) => {
+const FeatureCard = ({ title, description, icon, delay = 0 }: FeatureCardProps) => {
   return (
     <motion.div 
       className="bg-gradient-to-br from-dusk to-off-black p-6 rounded-xl border border-ocean/30"

@@ -1,7 +1,12 @@
 import { motion } from 'framer-motion';
 
 // Pricing feature indicator component
-const FeatureItem = ({ text, included = true }) => {
+interface FeatureItemProps {
+  text: string;
+  included?: boolean;
+}
+
+const FeatureItem = ({ text, included = true }: FeatureItemProps) => {
   return (
     <div className="flex items-start py-2">
       {included ? (
@@ -19,7 +24,27 @@ const FeatureItem = ({ text, included = true }) => {
 };
 
 // Pricing card component
-const PricingCard = ({ title, price, description, features, cta, popular = false, delay = 0 }) => {
+interface FeatureType {
+  text: string;
+  included: boolean;
+}
+
+interface CTAType {
+  text: string;
+  link: string;
+}
+
+interface PricingCardProps {
+  title: string;
+  price: string;
+  description: string;
+  features: FeatureType[];
+  cta: CTAType;
+  popular?: boolean;
+  delay?: number;
+}
+
+const PricingCard = ({ title, price, description, features, cta, popular = false, delay = 0 }: PricingCardProps) => {
   return (
     <motion.div
       className={`rounded-2xl border ${

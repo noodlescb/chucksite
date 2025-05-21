@@ -1,7 +1,15 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const useCases = [
+interface UseCase {
+  id: string;
+  title: string;
+  description: string;
+  benefits: string[];
+  command: string;
+}
+
+const useCases: UseCase[] = [
   {
     id: 'identity-resolution',
     title: 'Customer Identity Resolution',
@@ -57,7 +65,7 @@ const useCases = [
 ];
 
 const UseCases = () => {
-  const [activeCase, setActiveCase] = useState(useCases[0]);
+  const [activeCase, setActiveCase] = useState<UseCase>(useCases[0]);
 
   return (
     <section id="use-cases" className="py-24 relative overflow-hidden">

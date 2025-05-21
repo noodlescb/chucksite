@@ -1,6 +1,13 @@
 import { motion } from 'framer-motion';
 
-const StepCard = ({ number, title, description, isActive = false }) => {
+interface StepCardProps {
+  number: string | number;
+  title: string;
+  description: string;
+  isActive?: boolean;
+}
+
+const StepCard = ({ number, title, description, isActive = false }: StepCardProps) => {
   return (
     <motion.div 
       className={`relative p-6 rounded-xl transition-all ${
