@@ -1,12 +1,15 @@
 import { motion } from 'framer-motion';
 
 // Pricing feature indicator component
+import Image from 'next/image';
+
 interface FeatureItemProps {
   text: string;
   included?: boolean;
+  specialText?: boolean;
 }
 
-const FeatureItem = ({ text, included = true }: FeatureItemProps) => {
+const FeatureItem = ({ text, included = true, specialText = false }: FeatureItemProps) => {
   return (
     <div className="flex items-start py-2">
       {included ? (
@@ -18,7 +21,28 @@ const FeatureItem = ({ text, included = true }: FeatureItemProps) => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
         </svg>
       )}
-      <span className={`${included ? 'text-gray-200' : 'text-gray-500'}`}>{text}</span>
+      {specialText && text.includes("Databricks") ? (
+        <span className={`${included ? 'text-gray-200' : 'text-gray-500'} flex items-center`}>
+          <span>
+            {text.split("Databricks")[0]}
+          </span>
+          <span className="inline-flex items-center mx-1">
+            <Image 
+              src="/images/databricks/databricks-symbol-light.svg"
+              width={16}
+              height={16}
+              alt="Databricks"
+              className="mx-1"
+            />
+            Databricks
+          </span>
+          <span>
+            {text.split("Databricks")[1] || ""}
+          </span>
+        </span>
+      ) : (
+        <span className={`${included ? 'text-gray-200' : 'text-gray-500'}`}>{text}</span>
+      )}
     </div>
   );
 };
@@ -27,6 +51,7 @@ const FeatureItem = ({ text, included = true }: FeatureItemProps) => {
 interface FeatureType {
   text: string;
   included: boolean;
+  specialText?: boolean;
 }
 
 interface CTAType {
@@ -72,7 +97,12 @@ const PricingCard = ({ title, price, description, features, cta, popular = false
       
       <div className="space-y-1 mb-8">
         {features.map((feature, i) => (
-          <FeatureItem key={i} text={feature.text} included={feature.included} />
+          <FeatureItem 
+            key={i} 
+            text={feature.text} 
+            included={feature.included}
+            specialText={feature.specialText} 
+          />
         ))}
       </div>
       
@@ -95,68 +125,44 @@ const PricingCard = ({ title, price, description, features, cta, popular = false
 const Pricing = () => {
   const pricingPlans = [
     {
-      title: "Free Trial",
+      title: "Free Tier",
       price: "$0",
       description: "Try Chuck Data with limited features to see how it can transform your data workflows.",
       features: [
-        { text: "Databricks connectivity", included: true },
+        { text: "Databricks connectivity", included: true, specialText: true },
         { text: "Unity Catalog browsing", included: true },
         { text: "Basic data exploration", included: true },
-        { text: "1 SQL warehouse", included: true },
-        { text: "PII detection (limited)", included: true },
-        { text: "Customer-centric modeling", included: false },
-        { text: "Identity keychains", included: false },
-        { text: "Workflow automation", included: false },
+        { text: "Semantic tagging framework", included: true },
+        { text: "PII detection", included: true },
+        { text: "Customer-centric modeling", included: true },
+        { text: "Identity keychains (up to 1M records)", included: true },
+        { text: "Stable ID algorithm", included: false },
         { text: "Advanced security features", included: false },
-        { text: "Premium support", included: false }
+        { text: "Enterprise support", included: false }
       ],
       cta: {
-        text: "Start Free Trial",
+        text: "Signup for free",
         link: "#signup"
       }
-    },
-    {
-      title: "Professional",
-      price: "$499",
-      description: "Full-featured access for individual data professionals and small teams.",
-      features: [
-        { text: "Databricks connectivity", included: true },
-        { text: "Unity Catalog browsing", included: true },
-        { text: "Advanced data exploration", included: true },
-        { text: "Unlimited SQL warehouses", included: true },
-        { text: "Complete PII detection", included: true },
-        { text: "Customer-centric modeling", included: true },
-        { text: "Identity keychains", included: true },
-        { text: "Basic workflow automation", included: true },
-        { text: "Standard security features", included: true },
-        { text: "Email support", included: true }
-      ],
-      cta: {
-        text: "Subscribe Now",
-        link: "#subscribe"
-      },
-      popular: true
     },
     {
       title: "Enterprise",
       price: "Custom",
       description: "Tailored solutions for organizations with advanced data engineering needs.",
       features: [
-        { text: "Everything in Professional", included: true },
-        { text: "Multi-workspace support", included: true },
-        { text: "Advanced workflow automation", included: true },
-        { text: "Custom model training", included: true },
-        { text: "Enterprise security features", included: true },
+        { text: "All features of the Free Tier", included: true },
+        { text: "Stable ID algorithm", included: true },
+        { text: "Unlimited Stitch records (1 credit per 100k records above 1M)", included: true },
         { text: "SSO & SAML integration", included: true },
         { text: "Dedicated account manager", included: true },
-        { text: "Custom integration support", included: true },
-        { text: "SLA guarantees", included: true },
-        { text: "24/7 priority support", included: true }
+        { text: "Enterprise support", included: true },
+        { text: "SLA guarantees", included: true }
       ],
       cta: {
         text: "Contact Sales",
         link: "#contact"
-      }
+      },
+      popular: false
     }
   ];
 
@@ -181,7 +187,7 @@ const Pricing = () => {
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 max-w-4xl mx-auto gap-8">
           {pricingPlans.map((plan, index) => (
             <PricingCard
               key={index}

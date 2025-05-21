@@ -64,8 +64,20 @@ const Hero = () => {
                 </motion.a>
               </div>
               
-              <div className="mt-8 text-gray-400">
-                <p>Built for Databricks | Trusted by data teams</p>
+              <div className="mt-8 flex flex-wrap items-center gap-4">
+                <div className="flex items-center gap-2">
+                  <span className="text-gray-400">Built for</span>
+                  <Image 
+                    src="/images/databricks/databricks-symbol-light.svg"
+                    width={24}
+                    height={24}
+                    alt="Databricks"
+                    className="inline"
+                  />
+                  <span className="text-gray-200 font-medium">Databricks</span>
+                </div>
+                <span className="text-gray-500">|</span>
+                <span className="text-gray-400">Trusted by data teams</span>
               </div>
             </motion.div>
           </div>

@@ -46,7 +46,7 @@ const CTA = () => {
                 
                 <p className="text-xl text-gray-300 mb-8">
                   Join innovative teams who are building better data models and workflows with Chuck. 
-                  Start your free trial today and experience the future of data engineering.
+                  Create your free account today and experience the future of data engineering.
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-4">
@@ -56,7 +56,7 @@ const CTA = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    Start Free Trial
+                    Create Free Account
                   </motion.a>
                   
                   <motion.a
@@ -65,18 +65,8 @@ const CTA = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    Get a Demo
+                    Watch a Demo
                   </motion.a>
-                </div>
-                
-                <div className="mt-8">
-                  <p className="text-prime-teal mb-3">Trusted by data-driven companies</p>
-                  <div className="flex flex-wrap gap-8 items-center opacity-70">
-                    <div className="h-8 w-24 bg-white/20 rounded"></div>
-                    <div className="h-8 w-32 bg-white/20 rounded"></div>
-                    <div className="h-8 w-28 bg-white/20 rounded"></div>
-                    <div className="h-8 w-36 bg-white/20 rounded"></div>
-                  </div>
                 </div>
               </div>
               
