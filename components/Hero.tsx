@@ -87,9 +87,17 @@ const Hero = () => {
                 priority
               />
               <div className="absolute -bottom-5 -right-5 z-20">
-                <div className="bg-gradient-to-r from-limoncello to-amp-yellow text-off-black py-2 px-4 rounded-full font-semibold text-sm">
-                  Powered by AI
-                </div>
+                <a href="https://www.amperity.com" target="_blank" rel="noopener noreferrer" 
+                   className="bg-gradient-to-r from-limoncello to-amp-yellow text-off-black py-2 px-4 rounded-full font-semibold text-sm flex items-center gap-2">
+                  Powered by 
+                  <Image 
+                    src="/images/amperity/2022_Amperity_Logo_YellowAvatar.svg"
+                    width={20}
+                    height={20}
+                    alt="Amperity"
+                  />
+                  Amperity
+                </a>
               </div>
             </div>
           </motion.div>

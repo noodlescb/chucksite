@@ -78,9 +78,23 @@ const Footer = () => {
         
         <div className="mt-12 pt-8 border-t border-ocean/20 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-500">© {new Date().getFullYear()} Chuck Data. All rights reserved.</p>
-          <div className="mt-4 md:mt-0">
+          <div className="mt-4 md:mt-0 flex items-center gap-6">
             <a href="#" className="text-limoncello hover:text-amp-yellow transition-colors">
               Built for Databricks
+            </a>
+            <a 
+              href="https://www.amperity.com" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="flex items-center gap-2"
+            >
+              <span className="text-gray-400">Powered by</span>
+              <Image 
+                src="/images/amperity/Amperity_Logo_Primary_Horiz_Dark_Bgs.svg"
+                width={100}
+                height={24}
+                alt="Amperity"
+              />
             </a>
           </div>
         </div>
